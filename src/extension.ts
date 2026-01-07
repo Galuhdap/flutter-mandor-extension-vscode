@@ -1,12 +1,22 @@
-import * as vscode from 'vscode';
-import { initConfigCommand } from './commands/initConfig';
+import * as vscode from "vscode";
+
+// Import command
+import { pasangModeCommand } from "./commands/mandorModeCommand";
 
 export function activate(context: vscode.ExtensionContext) {
+
+  // Command utama untuk pilih mode arsitektur
+  const pasangMode = vscode.commands.registerCommand(
+    "flutterMandor.pasangMode",
+    pasangModeCommand
+  );
+
   context.subscriptions.push(
-    vscode.commands.registerCommand(
-      'flutterMandor.initStructure',
-      initConfigCommand
-    )
+    pasangMode,
+  );
+
+  vscode.window.showInformationMessage(
+    "Flutter Mandor siap kerja boss! 🔧"
   );
 }
 

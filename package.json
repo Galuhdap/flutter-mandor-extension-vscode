@@ -13,14 +13,16 @@
       "onCommand:flutterMandor.initStructure"
   ],
   "main": "./out/extension.js",
+ 
   "contributes": {
     "commands": [
       {
-        "command": "flutterMandor.initStructure",
-        "title": "Flutter Mandor: Init Project Structure"
+        "command": "flutterMandor.pasangMode",
+        "title": "Flutter Mandor: Pasang Mode Arsitektur"
       }
     ]
   },
+
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
