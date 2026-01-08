@@ -3,7 +3,7 @@ import { initStructureStandard } from "./modes/standart";
 import { initStructureGetX } from "./modes/getx";
 import { initStructureBloc } from "./modes/bloc";
 
-export async function pasangModeCommand() {
+export async function pasangModeCommand(context: vscode.ExtensionContext) {
   const workspace = vscode.workspace.workspaceFolders;
 
   if (!workspace) {
@@ -19,12 +19,12 @@ export async function pasangModeCommand() {
         target: "standard",
       },
       {
-        label: "🔧 Mode Tukang GetX – GetX",
+        label: "🔧 Mode Tukang Kilat – GetX",
         description: "Clean structure berbasis GetX",
         target: "getx",
       },
       {
-        label: "📐 Mode Tukang Bloc – Bloc",
+        label: "📐 Mode Tukang Express – Bloc",
         description: "Clean structure berbasis Bloc",
         target: "bloc",
       },
@@ -39,7 +39,7 @@ export async function pasangModeCommand() {
 
   switch (pilihan.target) {
     case "standard":
-      await initStructureStandard();
+      await initStructureStandard(context);
       vscode.window.showInformationMessage(
         "Flutter Mandor: Mode Kuli berhasil dipasang!"
       );

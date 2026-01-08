@@ -17,10 +17,10 @@ import {
   mainPageTemplate,
 } from "../templates/main";
 
-import { vscodeLaunchTemplate } from "../templates/lunch_json/vscode_config";
+import { vscodeLaunchTemplate } from "../templates/lunch_json/vscodeConfig";
 
 // 🔥 IMPORT TEMPLATE ANDROID
-import { androidFlavorGradleTemplate } from "../templates/gradle/flavor_config_android_app";
+import { androidFlavorGradleTemplate } from "../templates/gradle/flavoConfigAndroidApp";
 
 // =========================
 // Fungsi baru untuk inject gradle

@@ -18,10 +18,10 @@ import {
   mainPageTemplate,
 } from "../../templates/main";
 
-import { vscodeLaunchTemplate } from "../../templates/lunch_json/vscode_config";
+import { vscodeLaunchTemplate } from "../../templates/lunch_json/vscodeConfig";
 
 // Android template
-import { androidFlavorGradleTemplate } from "../../templates/gradle/flavor_config_android_app";
+import { androidFlavorGradleTemplate } from "../../templates/gradle/flavoConfigAndroidApp";
 
 // =========================
 // Helper untuk inject Android Flavor

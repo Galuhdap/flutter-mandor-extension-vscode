@@ -10,10 +10,9 @@
     "Other"
   ],
   "activationEvents": [
-      "onCommand:flutterMandor.initStructure"
+    "onCommand:flutterMandor.initStructure"
   ],
   "main": "./out/extension.js",
- 
   "contributes": {
     "commands": [
       {
@@ -22,11 +21,10 @@
       }
     ]
   },
-
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "npm run compile && cp -r src/templates/asset out/templates/",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "watch": "tsc -w",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
     "test": "vscode-test"
