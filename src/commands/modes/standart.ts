@@ -16,6 +16,11 @@ import { mainStandardTemplate } from "../../templates/main/main_standard";
 import { imageWidgetTemplate } from "../../templates/presentations/mandor/widget/image_widget";
 import { getFlutterProjectName } from "../../utils/flutterUtils";
 import { flutterMandorPageTemplate } from "../../templates/presentations/mandor/page/mandor_page";
+import { appColorsTemplate } from "../../templates/core/styles/app_colors";
+import { apiLoggerTemplate } from "../../templates/core/utils/api_logger";
+import { appConstantsTemplate } from "../../templates/core/resources/constants/appConstants";
+import { buildContextTemplate } from "../../templates/core/extensions/buildContexExtension";
+import { sizeBoxExtensionTemplate } from "../../templates/core/extensions/sizedBoxExtension";
 
 export async function initStructureStandard(context: vscode.ExtensionContext) {
   const workspace = vscode.workspace.workspaceFolders;
@@ -37,7 +42,7 @@ export async function initStructureStandard(context: vscode.ExtensionContext) {
   const confirm = await vscode.window.showWarningMessage(
     "Flutter Mandor: Pasang Mode Standard (Mode Kuli)?",
     { modal: true },
-    "Yes"
+    "Yes",
   );
 
   if (confirm !== "Yes") return;
@@ -69,6 +74,64 @@ export async function initStructureStandard(context: vscode.ExtensionContext) {
       fs.mkdirSync(path.dirname(fullPath), { recursive: true });
       createFile(fullPath, content);
     });
+
+    // =========================
+    // Generate Core styles Files
+    // =========================
+
+    const coreAppColorFiles: Record<string, string> = {
+      "core/style/app_colors.dart": appColorsTemplate,
+    };
+
+    Object.entries(coreAppColorFiles).forEach(([relativePath, content]) => {
+      const fullPath = path.join(libPath, relativePath);
+      fs.mkdirSync(path.dirname(fullPath), { recursive: true });
+      createFile(fullPath, content);
+    });
+
+    const coreApiLoggerFiles: Record<string, string> = {
+      "core/utils/app_logger.dart": apiLoggerTemplate,
+    };
+
+    Object.entries(coreApiLoggerFiles).forEach(([relativePath, content]) => {
+      const fullPath = path.join(libPath, relativePath);
+      fs.mkdirSync(path.dirname(fullPath), { recursive: true });
+      createFile(fullPath, content);
+    });
+
+    const coreAppConstantsFiles: Record<string, string> = {
+      "core/resources/constants/app_constants.dart": appConstantsTemplate,
+    };
+
+    Object.entries(coreAppConstantsFiles).forEach(([relativePath, content]) => {
+      const fullPath = path.join(libPath, relativePath);
+      fs.mkdirSync(path.dirname(fullPath), { recursive: true });
+      createFile(fullPath, content);
+    });
+
+    const coreExtensionBuildContextFiles: Record<string, string> = {
+      "core/extensions/build_context_extension.dart": buildContextTemplate,
+    };
+
+    Object.entries(coreExtensionBuildContextFiles).forEach(
+      ([relativePath, content]) => {
+        const fullPath = path.join(libPath, relativePath);
+        fs.mkdirSync(path.dirname(fullPath), { recursive: true });
+        createFile(fullPath, content);
+      },
+    );
+    
+    const coreExtensionSizedBoxFiles: Record<string, string> = {
+      "core/extensions/sized_box_extension.dart": sizeBoxExtensionTemplate,
+    };
+
+    Object.entries(coreExtensionSizedBoxFiles).forEach(
+      ([relativePath, content]) => {
+        const fullPath = path.join(libPath, relativePath);
+        fs.mkdirSync(path.dirname(fullPath), { recursive: true });
+        createFile(fullPath, content);
+      },
+    );
 
     // =========================
     // Generate Presentation Files
@@ -116,7 +179,7 @@ export async function initStructureStandard(context: vscode.ExtensionContext) {
     // =========================
 
     vscode.window.showInformationMessage(
-      "Flutter Mandor: Mode Standard (Mode Kuli) berhasil dipasang!"
+      "Flutter Mandor: Mode Standard (Mode Kuli) berhasil dipasang!",
     );
   } catch (error: any) {
     vscode.window.showErrorMessage(`Flutter Mandor error: ${error.message}`);
